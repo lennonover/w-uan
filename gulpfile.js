@@ -1,13 +1,12 @@
 'use strict';
 let gulp = require('gulp');
 let babel = require('gulp-babel');
-// 获取 uglify 模块（用于压缩 JS）
 let uglify = require('gulp-uglify');
+
 /**
- * 编译js文件
+ * ES6 编译
  */
 gulp.task('es6', function () {
-    //pages下面的业务代码进行babel处理
     gulp.src(['./js/uan.js'])
         .pipe(babel({
             presets: ['es2015']
@@ -15,10 +14,10 @@ gulp.task('es6', function () {
         .pipe(gulp.dest('./build'));
 });
 /**
- * 压缩js
+ * uan 压缩
  */
 gulp.task('minify-js',()=>{
-    return gulp.src(['./buil/uan.js'])
+    return gulp.src(['./build/uan.js'])
         .pipe(uglify({
             compress:false,
             mangle:{
@@ -27,9 +26,10 @@ gulp.task('minify-js',()=>{
         }))
         .pipe(gulp.dest('./build/min'));
 });
+
 /**
- * 运行任务
+ * 构建
  */
-gulp.task('build', ['es6'], function () {
-    gulp.watch('*.js', ['es6']);
+gulp.task('build', ['es6','minify-js'], function () {
+    gulp.watch('js/*.js', ['es6']);
 });;

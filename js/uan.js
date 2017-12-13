@@ -1,3 +1,8 @@
+/**
+ * @author: walei
+ * @date:   2017-12-10
+ * @desc:   日常工具方法
+ */
 let uan = {
     /**
      * 去除空格 
