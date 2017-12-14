@@ -5,11 +5,27 @@
  */
 let uan = {
     /**
+     * 获取 url 参数
+     * @param {String | null} prop 
+     */
+    getUrlParams( prop ) {
+        let params = {};
+        let search = decodeURIComponent( window.location.href.slice( window.location.href.indexOf( '?' ) + 1 ) );
+        let definitions = search.split( '&' );
+    
+        definitions.forEach( function( val, key ) {
+            let parts = val.split( '=', 2 );
+            params[ parts[ 0 ] ] = parts[ 1 ];
+        } );
+    
+        return ( prop && prop in params ) ? params[ prop ] : params;
+    },
+    /**
      * 去除空格 
      * @param {String} str 
      * @param {Number} type 1-所有空格  2-前后空格  3-前空格 4-后空格
      */
-    trim(str, type) {
+    trim (str, type) {
         switch (type) {
             case 1:
                 return str.replace(/\s+/g, "");
@@ -33,7 +49,7 @@ let uan = {
         4：全部大写
         5：全部小写
      */
-    changeLetter(str, type) {
+    changeLetter (str, type) {
         function ToggleCase(str) {
             let itemText = ""
             str.split("").forEach(item => {
@@ -66,5 +82,37 @@ let uan = {
             default:
                 return str;
         }
+    },
+    /**
+     * 设置 cookie
+     * @param {String} name 名称
+     * @param {String} value 值
+     * @param {Number} day 时间（天数）
+     */
+    setCookie(name, value, day) {
+        let nowDate = new Date();
+        nowDate.setDate(nowDate.getDate() + day);
+        document.cookie = name + '=' + value + ';expires=' + nowDate;
+    },
+    /**
+     * 获取 cookie
+     * @param {String} name 名称
+     */
+    getCookie(name) {
+        let arr = document.cookie.split('; ');
+        for (let i = 0; i < arr.length; i++) {
+            let arr2 = arr[i].split('=');
+            if (arr2[0] == name) {
+                return arr2[1];
+            }
+        }
+        return '';
+    },
+    /**
+     * 删除 cookie 名称
+     * @param {String} name 
+     */
+    removeCookie(name) {
+        this.setCookie(name, 1, -1);
     },
 }
