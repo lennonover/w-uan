@@ -20,6 +20,7 @@ let uan = {
     
         return ( prop && prop in params ) ? params[ prop ] : params;
     },
+    
     /**
      * 去除空格 
      * @param {String} str 
@@ -39,6 +40,7 @@ let uan = {
                 return str;
         }
     },
+
     /**
      * 转换大小写
      * @param {String} str  
@@ -82,6 +84,16 @@ let uan = {
                 return str;
         }
     },
+
+    /**
+     * 计数数组中值的出现次数
+     * @param {Array} arr 
+     * @param {String} value 
+     */
+    countOccurrences(arr, value){
+        arr.reduce((a, v) => v === value ? a + 1 : a + 0, 0)
+    },
+
     /**
      * 设置 cookie
      * @param {String} name 名称
@@ -93,6 +105,7 @@ let uan = {
         nowDate.setDate(nowDate.getDate() + day);
         document.cookie = name + '=' + value + ';expires=' + nowDate;
     },
+
     /**
      * 获取 cookie
      * @param {String} name 名称
@@ -107,6 +120,7 @@ let uan = {
         }
         return '';
     },
+
     /**
      * 删除 cookie 名称
      * @param {String} name 
@@ -114,4 +128,5 @@ let uan = {
     removeCookie(name) {
         this.setCookie(name, 1, -1);
     },
+   
 }
