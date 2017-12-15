@@ -20,7 +20,7 @@ let uan = {
     
         return ( prop && prop in params ) ? params[ prop ] : params;
     },
-    
+
     /**
      * 去除空格 
      * @param {String} str 
@@ -88,7 +88,7 @@ let uan = {
     /**
      * 计数数组中值的出现次数
      * @param {Array} arr 
-     * @param {String} value 
+     * @param {String | Number} value 
      */
     countOccurrences(arr, value){
         arr.reduce((a, v) => v === value ? a + 1 : a + 0, 0)
