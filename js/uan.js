@@ -8,7 +8,7 @@ let uan = {
      * 获取 url 参数
      * @param {String | null} prop 
      */
-    getUrlParams( prop ) {
+    getUrlParams ( prop ) {
         let params = {};
         let search = decodeURIComponent( window.location.href.slice( window.location.href.indexOf( '?' ) + 1 ) );
         let definitions = search.split( '&' );
@@ -90,7 +90,7 @@ let uan = {
      * @param {Array} arr 
      * @param {String | Number} value 
      */
-    countOccurrences(arr, value){
+    countOccurrences (arr, value){
         arr.reduce((a, v) => v === value ? a + 1 : a + 0, 0)
     },
 
@@ -100,7 +100,7 @@ let uan = {
      * @param {String} value 值
      * @param {Number} day 时间（天数）
      */
-    setCookie(name, value, day) {
+    setCookie (name, value, day) {
         let nowDate = new Date();
         nowDate.setDate(nowDate.getDate() + day);
         document.cookie = name + '=' + value + ';expires=' + nowDate;
@@ -110,7 +110,7 @@ let uan = {
      * 获取 cookie
      * @param {String} name 名称
      */
-    getCookie(name) {
+    getCookie (name) {
         let arr = document.cookie.split('; ');
         for (let i = 0; i < arr.length; i++) {
             let arr2 = arr[i].split('=');
@@ -125,8 +125,43 @@ let uan = {
      * 删除 cookie 名称
      * @param {String} name 
      */
-    removeCookie(name) {
+    removeCookie (name) {
         this.setCookie(name, 1, -1);
     },
-   
+
+    /**
+     * 是否是偶数
+     * @param {Number} num 
+     */
+    isEven (num){
+        return num % 2 === 0;
+    },
+
+    /**
+     * 取范围内的随机整数
+     * @param {Number} min 
+     * @param {Number} max 
+     */
+    randomIntegerInRange (min, max){
+        return Math.floor(Math.random() * (max - min + 1)) + min
+    },
+
+    /**
+     * 取范围内的随机数
+     * @param {Number} min 
+     * @param {Number} max 
+     */
+    randomNumberInRange (min, max){
+        return Math.random() * (max - min) + min;
+    },
+    /**
+     * 方法运行时间
+     * @param {Function} func 
+     */
+    timeTaken (func){
+        console.time('timeTaken');  
+        const r = func();
+        console.timeEnd('timeTaken');  
+        return r;
+    }
 }
