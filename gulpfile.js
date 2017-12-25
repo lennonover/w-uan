@@ -16,7 +16,7 @@ gulp.task('es6', function () {
 /**
  * uan 压缩
  */
-gulp.task('minify-js',()=>{
+gulp.task('minify-js',['es6'],()=>{
     return gulp.src(['./build/uan.js'])
         .pipe(uglify({
             compress:false,
@@ -30,6 +30,7 @@ gulp.task('minify-js',()=>{
 /**
  * 构建
  */
-gulp.task('build', ['es6','minify-js'], function () {
-    gulp.watch('js/*.js', ['es6']);
+gulp.task('build', ['minify-js'], function () {
+    gulp.watch('js/*.js',['es6']);
+    gulp.watch('build/*.js',['minify-js']);
 });;

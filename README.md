@@ -46,8 +46,10 @@
 
 - 方法运行时间
 
-    uan.timeTaken(function(){
-        console.log(6)
-    })
+    uan.timeTaken(() => Math.acosh(200)) -> timeTaken: 0.06201171875ms 
+
+- 数字金额转大写
+
+    uan.numToUppercase(474636732.08) -> 肆亿柒仟肆佰陆拾叁万陆仟柒佰叁拾贰元捌分
 
 
