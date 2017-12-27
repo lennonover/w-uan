@@ -7,9 +7,13 @@
     <title>w-uan</title>
 </head>
 <body>
-    <script src="./build/min/uan.js"></script>
+    <script src="./build/uan.js"></script>
     <script>
-        console.log(uan.numToUppercase(474636732.08))
+        
+        uan.setAgeLocalStorage(1).setLocalStorage('a','abc').setLocalStorage('b',{a:1,b:2}).setLocalStorage('a');
+        console.log(uan.getLocalStorage('a'));
+        console.log(uan.getLocalStorage('b'));
+        console.log(uan.numToUppercase(474636732.08));
     </script>
 </body>
 </html>

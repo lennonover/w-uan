@@ -32,6 +32,23 @@
 
     uan.changeLetter('COOKIE')
 
+- 设置 LocalStorage 时间
+    
+    单位天 默认30天 可链式操作
+    uan.setAgeLocalStorage(1)
+
+- 设置 LocalStorage
+
+    uan.setLocalStorage('a','abc')
+
+- 获取 LocalStorage
+
+    uan.setLocalStorage('a');
+
+- 删除 LocalStorage 
+
+    uan.removeLocalStorage('a')
+
 - 是否是偶数
 
     uan.isEven(8) -> true
