@@ -34,7 +34,7 @@
 
 - 设置 LocalStorage 时间
     
-    单位天 默认30天 可链式操作
+    单位天 默认30天 可链式操作         
     uan.setAgeLocalStorage(1)
 
 - 设置 LocalStorage
